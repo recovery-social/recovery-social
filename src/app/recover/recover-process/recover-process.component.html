@@ -1,0 +1,39 @@
+<div class="inner-stage">
+  <h1>Recover access to UP</h1>
+
+  <p *ngIf="recoveryProcessIDs.length != 0">Recovery-Processes</p>
+  <div class="pb-4 flex">
+    <div
+      class="m-4 p-4 flex card bg-white shadow-lg rounded-3xl justify-center shrink-0 cursor-pointer overflow-visible"
+      [class.btn-primary]="recoveryServiceService.recoveryProcessID === p"
+      (click)="select(p)"
+      *ngFor="let p of recoveryProcessIDs"
+    >
+      <i
+        class="w-8 h-8 flex justify-center items-center absolute -right-2 -top-2 fas text-white rounded-full"
+        [class.bg-success]="canRecoverMap[p] === true"
+        [class.fa-check]="canRecoverMap[p] === true"
+        [class.bg-gray-400]="canRecoverMap[p] === false"
+        [class.fa-hourglass]="canRecoverMap[p] === false"
+      ></i>
+      <h2>{{ p }}</h2>
+    </div>
+    <div *ngIf="recoveryProcessIDs.length == 0">
+      Currently no recover in process
+    </div>
+  </div>
+
+  <div>
+    <p *ngIf="lengthRecoveryServiceGuardians > 0">Interact with Recovery Service</p>
+    <app-ui-recovery-service
+      *ngFor="
+        let g of this.recoveryServiceService.myRsGuardiansInfo | keyvalue;
+        let index = index
+      "
+      [address]="g.key"
+      [guardian]="g.value"
+      (click)="selectRecoveryService(g.key)"
+    >
+    </app-ui-recovery-service>
+  </div>
+</div>

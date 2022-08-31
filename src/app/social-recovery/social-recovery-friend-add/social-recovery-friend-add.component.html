@@ -1,0 +1,26 @@
+<div class="inner-stage">
+  <h1>Add Guardian address</h1>
+
+  <div class="w-full" *ngIf="!loading">
+    <input
+      [(ngModel)]="address"
+      (ngModelChange)="addressEntered($event)"
+      type="text"
+      placeholder="Enter address you want to add"
+      class="input input-bordered w-full mb-4"
+      [disabled]="loading"
+    />
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+
+  <app-ui-up-card #upCard> </app-ui-up-card>
+
+  <button *ngIf="!loading" class="btn btn-primary" (click)="add()">
+    Add Address as Guardian
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

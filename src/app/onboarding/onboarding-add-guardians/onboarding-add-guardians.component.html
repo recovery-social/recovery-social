@@ -1,0 +1,20 @@
+<div class="inner-stage">
+  <h1>Add wallet address you want to add</h1>
+
+  <div class="w-full">
+    <input
+      [(ngModel)]="address"
+      (ngModelChange)="addressEntered($event)"
+      type="text"
+      placeholder="Enter address"
+      class="input input-bordered w-full mb-4"
+    />
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+
+  <app-ui-up-card #upCard> </app-ui-up-card>
+
+  <button  class="btn btn-primary" (click)="add()">
+    Add
+  </button>
+</div>

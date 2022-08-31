@@ -1,0 +1,27 @@
+<!-- <div
+  class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+  *ngFor="
+    let g of recoveryServiceService.suggestedGuardiansInfos | keyvalue;
+    let index = index
+  "
+>
+  <img class="w-24" *ngIf="g.value.imageUrl" [src]="g.value.imageUrl" />
+  <h2>{{ g.value.name }}</h2>
+  <h2>{{ g.key }}</h2>
+</div> -->
+
+<div
+  class="card flex sm:flex-row items-center shadow-xl p-6 mx-4"
+  [class.py-2]="small"
+  *ngIf="guardian"
+>
+  <div class="avatar mr-4">
+    <div class="w-24" *ngIf="guardian?.imageUrl">
+      <img style="object-fit: contain" [src]="guardian.imageUrl" />
+    </div>
+  </div>
+  <div class="text-left grow">
+    <p class="font-bold pb-0">{{ guardian.name }}</p>
+    <p class="text-xs pb-0">{{ address }}</p>
+  </div>
+</div>

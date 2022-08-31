@@ -1,0 +1,105 @@
+<div class="inner-stage">
+  <div>
+    <h1>Add your first Guardians</h1>
+    <p>Add some friends or family wallet addresses.<br>If you lose access to your Universal Profile, they can help you regain access by voting for your new address.</p>
+  </div>
+
+  <div
+    *ngIf="
+      !contractService.onboardingGuardians ||
+      contractService.onboardingGuardians?.length === 0
+    "
+  >
+    <p>You don't have any guardians yet.</p>
+
+    <button
+      class="btn btn-primary mx-2 mb-8"
+      routerLink="/onboarding/guardians/add"
+    >
+      <i class="fas fa-plus mr-2"></i> Add guardian
+    </button>
+  </div>
+
+  <div
+    *ngIf="
+      contractService.onboardingGuardians &&
+      contractService.onboardingGuardians.length > 0
+    "
+  >
+    <!-- <h2>Friends</h2> -->
+
+    <app-ui-up-card
+      *ngFor="let guardian of contractService.onboardingGuardians"
+      [address]="guardian"
+      [showDelete]="true"
+      (onDelete)="removeGuardian($event)"
+    >
+    </app-ui-up-card>
+
+    <!-- <div class="overflow-x-auto w-full">
+      <table class="table w-full">
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Name</th>
+            <th>2</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let guardian of guardians">
+            <tr>
+              <td>0xadasas</td>
+              <td>
+                <div class="flex items-center space-x-3">
+                  <div>
+                    <div class="font-bold">{{ guardian }}</div>
+                    <div class="text-sm opacity-50">United States</div>
+                  </div>
+                </div>
+              </td>
+              <td>Purple</td>
+              <th>
+                <button
+                  class="btn btn-ghost btn-xs"
+                  (click)="removeGuardian(guardian)"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </th>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div> -->
+
+    <button
+      class="btn btn-primary mx-2 mb-8"
+      routerLink="/onboarding/guardians/add"
+    >
+      <i class="fas fa-plus mr-2"></i> Add another guardian
+    </button>
+  </div>
+  <div class="md:flex justify-center">
+    <button
+      class="btn btn-primary mx-2"
+      (click)="next()"
+      *ngIf="
+        contractService.onboardingGuardians &&
+        contractService.onboardingGuardians.length > 0
+      "
+    >
+      Next <i class="fas fa-chevron-right ml-2"></i>
+    </button>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="next()"
+      *ngIf="
+        !contractService.onboardingGuardians ||
+        contractService.onboardingGuardians?.length === 0
+      "
+    >
+      Skip <i class="fas fa-chevron-right ml-2"></i>
+    </button>
+  </div>
+</div>

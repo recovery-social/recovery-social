@@ -1,0 +1,23 @@
+<div class="inner-stage">
+  <h1>Let's create the contract!</h1>
+
+  <div *ngIf="!loading">
+    <p>In this step, your own recovery contract will be created.</p>
+    <p>After clicking the button your UP Browser Extension will open and you have to sign the transaction.</p>
+  </div>
+
+  <ng-lottie
+    *ngIf="loading"
+    width="300px"
+    containerClass="moving-box another-class"
+    [options]="{ path: '/assets/animations/loading.json' }"
+  ></ng-lottie>
+
+  <p *ngIf="error" class="text-error">{{ error }}</p>
+  <button *ngIf="!loading" class="btn btn-primary" (click)="deploy()">
+    LET'S GO
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

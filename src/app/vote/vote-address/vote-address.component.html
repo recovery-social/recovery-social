@@ -1,0 +1,30 @@
+<div class="inner-stage">
+  <h1>Vote for a friend</h1>
+  <div class="w-full">
+    <input
+      [(ngModel)]="address"
+      (ngModelChange)="addressEntered($event)"
+      type="text"
+      placeholder="Enter Universal Profile address you want to vote vor"
+      class="input input-bordered w-full mb-4"
+      [disabled]="loading"
+    />
+    <p class="text-error" *ngIf="message">{{ message }}</p>
+  </div>
+
+  <app-ui-up-card #upCard> </app-ui-up-card>
+
+  <button *ngIf="!loading && !showNext" class="btn btn-primary" (click)="add()">
+    Check
+  </button>
+
+  <div *ngIf="showNext">
+    <p>You are allowed to Vote for your friend 🥳</p>
+    <button *ngIf="!loading" class="btn btn-primary" routerLink="/vote/process">
+      Next
+    </button>
+  </div>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

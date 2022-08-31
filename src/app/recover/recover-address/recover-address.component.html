@@ -1,0 +1,21 @@
+<div class="inner-stage">
+  <h1>Enter UP address you want to regain access to</h1>
+  <div class="w-full"> 
+    <input
+      [(ngModel)]="recoverService.addressToRecover"
+      (ngModelChange)="addressEntered($event)"
+      type="text"
+      placeholder="Enter address"
+      class="input input-bordered w-full mb-4"
+      [disabled]="loading"
+    />
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+
+  <app-ui-up-card #upCard> </app-ui-up-card>
+  
+  <button *ngIf="!loading" class="btn btn-primary" (click)="add()">Next</button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

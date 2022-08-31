@@ -1,0 +1,45 @@
+<div class="inner-stage">
+  <h1>Add Recovery Service</h1>
+
+  <div class="w-full">
+    <p>Suggested Recovery Services</p>
+
+    <!-- <div class="overflow-x-auto overflow-y-visible md:-mx-8 -mx-8 pb-8 flex"> -->
+    <div
+      *ngFor="
+        let g of this.recoveryServiceService.suggestedGuardiansInfos | keyvalue;
+        let index = index
+      "
+      class="my-2"
+    >
+      <app-ui-recovery-service
+        [address]="g.key"
+        [guardian]="g.value"
+        (click)="select(g)"
+      >
+      </app-ui-recovery-service>
+      <!-- <div
+      class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+      (click)="select(g)"
+      [class.ml-6]="index === 0"
+      *ngFor="
+        let g of recoveryServiceService.suggestedGuardiansInfos | keyvalue;
+        let index = index
+      "
+    >
+      <img class="w-24" *ngIf="g.value.imageUrl" [src]="g.value.imageUrl" />
+      <h2>{{ g.value.name }}</h2>
+      <h2>{{ g.key }}</h2>
+    </div> -->
+    </div>
+  </div>
+
+  <div class="mt-4 flex md:flex-row flex-col">
+    <button
+      class="btn btn-primary"
+      routerLink="/social-recovery/recovery-service/guardian/add"
+    >
+      <i class="fas fa-plus mr-2"></i>Add Custom Recovery Service
+    </button>
+  </div>
+</div>

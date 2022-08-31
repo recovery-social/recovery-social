@@ -1,0 +1,21 @@
+<div class="inner-stage">
+  <h1>Yeah!<br />Now let's add this Recovery Service as a Guardian</h1>
+  <div *ngIf="!loading">
+    <p>If you want to recover later, this recovery service charges you:</p>
+    <h2 class="pb-0">
+      <img src="/assets/img/lukso-signet.png" class="w-12 inline" />
+      {{ pricetoRecover }} LYXt
+    </h2>
+  </div>
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+
+  <button class="btn btn-primary" (click)="sign()" *ngIf="!loading">
+    Add Recovery Service
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>
+
+<!-- <i class="back-button fas fa-chevron-left" (click)="back()"></i> -->

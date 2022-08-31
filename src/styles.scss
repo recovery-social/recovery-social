@@ -1,0 +1,127 @@
+@import "~ngx-toastr/toastr";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins";
+}
+
+html {
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: bold;
+  font-weight: 700;
+  src: url("./assets/fonts/Poppins/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: bold;
+  font-weight: 900;
+  src: url("./assets/fonts/Poppins/Poppins-Black.ttf");
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-medium mb-2;
+}
+h1 {
+  @apply text-3xl font-bold;
+}
+h2 {
+  @apply text-2xl;
+}
+h3 {
+  @apply text-xl;
+}
+h4 {
+  @apply text-lg;
+}
+h5 {
+  @apply text-lg;
+}
+h6 {
+  @apply text-base;
+}
+p {
+  @apply font-normal text-base mb-4;
+}
+
+canvas {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0 !important;
+  pointer-events: none;
+}
+
+.background {
+  background: #f9f2f2;
+  @apply h-full w-full;
+  @apply md:flex justify-center items-center;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 33%;
+  }
+}
+
+.stage {
+  @apply relative bg-white mx-auto rounded-3xl shadow-2xl;
+  @apply md:p-8 p-4 md:py-16;
+
+  .inner-stage {
+    @apply flex flex-col justify-between items-center text-center;
+    min-height: 100%;
+  }
+  :not(div):not(button):not(input):not(p):not(h1):not(h2):not(table):not(iframe):nth-child(2) {
+    @apply h-full;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    height: 768px;
+  }
+
+  @media screen and (max-width: 768px) {
+    @apply w-full h-full;
+    @apply rounded-b-none;
+  }
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-primary to-secondary text-white border-none;
+}
+
+.btn-primary-big {
+  @apply w-full card btn-primary flex flex-row items-center p-8 my-4 cursor-pointer;
+
+  h2 {
+    @apply mx-4 mb-0;
+  }
+}
+
+.back-button {
+  @apply absolute top-8 left-8;
+}

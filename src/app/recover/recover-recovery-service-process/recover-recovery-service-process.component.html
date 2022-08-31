@@ -1,0 +1,47 @@
+<div class="inner-stage">
+  <h1>Successful response from the recovery service!<br>For which Process ID do you want to vote?</h1>
+  <div class="" *ngIf="!loading">
+    <div
+      class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+      [class.btn-primary]="recoveryServiceService.recoveryProcessID === p"
+      (click)="selectProcessId(p)"
+      *ngFor="let p of recoveryProcessIDs"
+    >
+      <h2>{{ p }}</h2>
+    </div>
+    <div *ngIf="recoveryProcessIDs.length == 0">
+      Currently no Recover in Process
+    </div>
+    <div
+      class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+      [class.btn-primary]="addNew"
+      (click)="addNew = true"
+    >
+      <h2 class="mb-0">
+        <i class="fas fa-plus mr-2"></i> Vote for new ProcessID
+      </h2>
+    </div>
+  </div>
+
+  <input
+    *ngIf="addNew && !loading"
+    [(ngModel)]="recoveryServiceService.recoveryProcessID"
+    type="text"
+    placeholder="Enter new recoveryProcessID"
+    class="input input-bordered w-full mb-4"
+    [disabled]="loading"
+  />
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+
+  <button
+    class="btn btn-primary"
+    routerLink="/recover/recovery-service/sign"
+    *ngIf="!loading"
+  >
+    Next
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

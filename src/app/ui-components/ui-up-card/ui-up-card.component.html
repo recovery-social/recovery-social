@@ -1,0 +1,29 @@
+<div
+  class="card flex sm:flex-row items-center shadow-xl p-6 mx-4 my-4"
+  *ngIf="profile"
+>
+  <div class="avatar mr-4">
+    <div
+      class="w-24"
+      [class.rounded-full]="!profile.price && !profile.priceforAddress"
+      *ngIf="profileImage"
+    >
+      <img [src]="profileImage" />
+    </div>
+  </div>
+  <div class="text-left grow">
+    <p class="font-bold mb-0">{{ profile.name }}</p>
+    <p *ngIf="profile.price || profile.priceforAddress" class="font-bold mb-0">
+      Price to Recover:
+      <img src="/assets/img/lukso-signet.png" class="w-6 inline" />
+      {{ getRecoverPrice(profile) }} LYXt
+    </p>
+    <p class="text-xs mb-0 break-all">{{ address }}</p>
+  </div>
+  <div *ngIf="showDelete && !loading">
+    <i class="fas fa-trash" (click)="onDelete.emit(address)"></i>
+  </div>
+  <div *ngIf="loading">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </div>
+</div>

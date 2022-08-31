@@ -1,0 +1,21 @@
+<div class="inner-stage">
+  <h1>For which Universal Profile Address do you want to vote?</h1>
+  <input
+    *ngIf="!loading"
+    [(ngModel)]="voteForAddress"
+    (ngModelChange)="addressEntered($event)"
+    type="text"
+    placeholder="Enter address"
+    class="input input-bordered w-full mb-4"
+  />
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+  <app-ui-up-card #upCard> </app-ui-up-card>
+
+  <button *ngIf="!loading" class="btn btn-primary" (click)="vote()">
+    Vote!
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

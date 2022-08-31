@@ -1,0 +1,22 @@
+<div class="inner-stage">
+  <div>
+    <h1>Set your Threshold</h1>
+    <p>This is the number of votes from guardians you will need to regain access to you Universal Profile</p>
+  </div>
+  <div>
+    <input
+      [(ngModel)]="newThreshold"
+      type="number"
+      placeholder="Enter new Threshold"
+      class="input input-bordered w-full mb-4"
+      [disabled]="loading"
+    />
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+
+  <div class="md:flex justify-center">
+    <button class="btn btn-primary mx-2" (click)="next()">
+      Next <i class="fas fa-chevron-right ml-2"></i>
+    </button>
+  </div>
+</div>

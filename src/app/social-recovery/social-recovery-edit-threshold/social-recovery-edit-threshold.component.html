@@ -1,0 +1,21 @@
+<div class="inner-stage">
+  <h1>Change Threshold</h1>
+
+  <div>
+    <h2>Current Threshold is {{ currentThreshold }}</h2>
+    <input
+      [(ngModel)]="newThreshold"
+      type="number"
+      placeholder="Enter new Threshold"
+      class="input input-bordered w-full mb-4"
+      [disabled]="loading"
+    />
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+  <button *ngIf="!loading" class="btn btn-primary" (click)="add()">
+    Set Threshold
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

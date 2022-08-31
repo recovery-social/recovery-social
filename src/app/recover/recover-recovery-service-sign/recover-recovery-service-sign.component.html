@@ -1,0 +1,21 @@
+<div class="inner-stage">
+  <h1>You are now able to vote for yourself</h1>
+
+  <div>
+    <p>To recover you have to pay the service</p>
+    <h2 class="pb-0">
+      <img src="/assets/img/lukso-signet.png" class="w-12 inline" />
+      {{ getRecoverPrice() }} LYXt
+    </h2>
+    <p>{{ message }}</p>
+  </div>
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+
+  <button class="btn btn-primary" (click)="sign()" *ngIf="!loading">
+    VOTE FOR MYSELF!
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

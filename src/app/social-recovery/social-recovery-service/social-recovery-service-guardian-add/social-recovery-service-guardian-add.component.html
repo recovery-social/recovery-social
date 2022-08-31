@@ -1,0 +1,14 @@
+<div class="inner-stage">
+    <h1>Add Custom Recovery Service</h1>
+    <input
+      [(ngModel)]="address"
+      type="text"
+      placeholder="Enter contract address of recovery service"
+      class="input input-bordered w-full mb-4"
+    />
+    <p *ngIf="message">{{ message }}</p>
+    <button class="btn btn-primary" (click)="add()">
+      Add custom recovery service
+    </button>
+  </div>
+  

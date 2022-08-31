@@ -1,0 +1,22 @@
+<div class="inner-stage">
+  <div>
+    <h1>Let's give the contract some rights.</h1>
+  </div>
+
+  <app-ui-loading-animation *ngIf="loading"></app-ui-loading-animation>
+
+  <p>
+    We successfully created the contract<br />Now we have to give the contract
+    the rights to change permissions for your Keymanager.<br />This way, after
+    there are enough votes for another address, the contract can give access to
+    your UP.
+  </p>
+
+  <p *ngIf="error" class="text-error">{{ error }}</p>
+  <button *ngIf="!loading" class="btn btn-primary" (click)="create()">
+    SET RIGHTS
+  </button>
+  <button *ngIf="loading" class="btn btn-primary">
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </button>
+</div>

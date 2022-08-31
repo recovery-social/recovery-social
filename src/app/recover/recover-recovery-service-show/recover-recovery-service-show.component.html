@@ -1,0 +1,36 @@
+<div class="inner-stage">
+  <h1>Connect with Recovery Service</h1>
+  <div *ngIf="id && recoveryServiceService.myRsGuardiansInfo?.[id]">
+    <p *ngIf="!recoveryServiceWindow">We are redirecting you to:</p>
+    <p *ngIf="recoveryServiceWindow">You are connected with:</p>
+
+    <app-ui-recovery-service
+      [guardian]="recoveryServiceService.myRsGuardiansInfo[id]"
+      [small]="true"
+    >
+    </app-ui-recovery-service>
+  </div>
+
+  <div class="alert alert-error shadow-lg bg-red-200" *ngIf="!recoveryServiceWindow">
+    <div class="flex-col items-start">
+      <p class="text-left mb-0"><i class="fas fa-fire"></i> Danger</p>
+      <p class="text-left mb-0">
+        You will get redirected to a Recovery Service.<br />This is a external
+        operator you will trust.<br />So please do your own research and only
+        sign transactions when you will be redirected to this site.
+      </p>
+    </div>
+  </div>
+  <div *ngIf="!recoveryServiceWindow">
+    <p *ngIf="endpoint">Click the button to connect to recovery service</p>
+    <button (click)="open()" class="btn btn-primary">
+      I will be careful. Continue
+    </button>
+  </div>
+
+  <app-ui-loading-animation
+    *ngIf="!endpoint || recoveryServiceWindow"
+  ></app-ui-loading-animation>
+
+  <p *ngIf="recoveryServiceWindow">Waiting to finish in other tab</p>
+</div>

@@ -1,0 +1,40 @@
+<div class="inner-stage">
+  <h1>Vote</h1>
+
+  <div class="">
+    <div
+      class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+      [class.btn-primary]="voteService.recoveryProcessID === p"
+      (click)="select(p)"
+      *ngFor="let p of recoveryProcessIDs"
+    >
+      <h2 class="mb-0">{{ p }}</h2>
+    </div>
+    <div
+      class="m-2 p-4 flex card bg-white shadow-xl rounded-3xl justify-center shrink-0 cursor-pointer"
+      [class.btn-primary]="addNew"
+      (click)="addNew = true"
+    >
+      <h2 class="mb-0">
+        <i class="fas fa-plus mr-2"></i> Vote for new ProcessID
+      </h2>
+    </div>
+  </div>
+  <input
+    *ngIf="addNew"
+    [(ngModel)]="voteService.recoveryProcessID"
+    type="text"
+    placeholder="Enter new recoveryProcessID"
+    class="input input-bordered w-full mb-4"
+    [disabled]="loading"
+  />
+
+  <button
+    *ngIf="!loading"
+    class="btn btn-primary"
+    routerLink="/vote/for-new-owner"
+    [disabled]="!voteService.recoveryProcessID"
+  >
+    Next
+  </button>
+</div>

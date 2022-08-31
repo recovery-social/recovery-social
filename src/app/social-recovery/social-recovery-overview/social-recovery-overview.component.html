@@ -1,0 +1,132 @@
+<div class="inner-stage">
+  <h1>Guardians</h1>
+  <div class="md:flex justify-center mb-4">
+    <button class="btn m-2" (click)="editPassword()">Edit password</button>
+
+    <button class="btn m-2" (click)="editThreshold()">Edit Threshold</button>
+  </div>
+
+  <p *ngIf="currentThreshold && currentThreshold == 1">You need {{currentThreshold}} Vote from any of your Guardians to recover your Profile</p>
+  <p *ngIf="currentThreshold && currentThreshold > 1">You need {{currentThreshold}} Votes from any of your Guardians to recover your Profile</p>
+
+  <h2>Friends</h2>
+
+  <div *ngIf="guardians?.length == 0">
+    <p>You don't have any guardians yet 🤯</p>
+  </div>
+
+  <div class="w-full" *ngIf="guardians.length > 0">
+    <app-ui-up-card
+      *ngFor="let guardian of guardians"
+      [address]="guardian"
+      [showDelete]="true"
+      [loading]="loading[guardian]"
+      (onDelete)="removeGuardian($event)"
+    >
+    </app-ui-up-card>
+  </div>
+  <!-- 
+  <div class="overflow-x-auto w-full" *ngIf="guardians.length > 0">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let guardian of guardians">
+          <tr>
+            <td>
+              <img
+                src="{{
+                  erc725inspectService.getIPFSURL(
+                    guardiansLSP3[guardian]?.value.LSP3Profile.profileImage[0]
+                      .url
+                  )
+                }}"
+                alt=""
+                [border]="3"
+                height="100"
+                width="100"
+              />
+            </td>
+            <td>
+              <div class="flex items-center space-x-3">
+                <div>
+                  <div class="font-bold">{{ guardian }}</div>
+                  <div class="text-sm opacity-50">
+                    {{ guardiansLSP3[guardian]?.value.LSP3Profile.name }}
+                  </div>
+                </div>
+              </div>
+            </td>
+            <th>
+              <button
+                class="btn btn-ghost btn-xs"
+                (click)="removeGuardian(guardian)"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </th>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div> -->
+  <button class="btn btn-primary mb-8" routerLink="/social-recovery/friend/add">
+    <i class="fas fa-plus mr-2"></i> Add guardian
+  </button>
+
+  <h2>Recovery Service</h2>
+  <div *ngIf="guardiansRecoveryService?.length == 0">
+    <p>You don't have any Reconvery Service guardians yet 🤯</p>
+  </div>
+
+  <div class="w-full" *ngIf="guardiansRecoveryService.length > 0">
+    <app-ui-up-card
+      *ngFor="let guardian of guardiansRecoveryService"
+      [address]="guardian"
+      [recoveryService]="true"
+      [showDelete]="true"
+      (onDelete)="removeRsGuardian($event)"
+    >
+    </app-ui-up-card>
+  </div>
+  <!-- <div class="overflow-x-auto w-full" *ngIf="guardians.length > 0">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0xadasas</td>
+          <td>
+            <div class="flex items-center space-x-3">
+              <div>
+                <div class="font-bold">Blabla</div>
+                <div class="text-sm opacity-50">United States</div>
+              </div>
+            </div>
+          </td>
+          <th>
+            <button class="btn btn-ghost btn-xs">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+  <button
+    class="btn btn-primary mb-4"
+    routerLink="/social-recovery/recovery-service/add"
+  >
+    <i class="fas fa-plus mr-2"></i> Add Recovery Service
+  </button>
+</div>

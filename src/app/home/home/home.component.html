@@ -1,0 +1,50 @@
+<div class="inner-stage">
+  <div class="avatar">
+    <!-- <div class="avatar absolute -top-8  overflow-visible"> -->
+    <div class="w-24 rounded-full shadow-xl">
+      <img *ngIf="profileImage" [src]="profileImage" />
+      <img *ngIf="!profileImage" src="/assets/img/placeholder.svg" />
+    </div>
+  </div>
+  <h1 *ngIf="!profile?.name">Hey!</h1>
+  <h1 *ngIf="profile?.name">Hey, {{ profile.name }}!</h1>
+
+  <h2>What do you want to do?</h2>
+  <div
+    class="btn-primary-big"
+    routerLink="/social-recovery"
+    *ngIf="hasContract === true"
+  >
+    <i class="fas fa-user-pen"></i>
+    <h2 class="grow">Edit my Social Recovery</h2>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div
+    class="btn-primary-big"
+    routerLink="/onboarding/password"
+    *ngIf="hasContract === false"
+  >
+    <i class="fas fa-user-plus"></i>
+    <h2 class="grow">Setup Social Recovery</h2>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="btn-primary-big" *ngIf="hasContract === undefined">
+    <i class="fas fa-spinner-third fa-spin"></i>
+    <h2 class="grow"><i class="fas fa-spinner-third fa-spin"></i></h2>
+    <i class="fas fa-spinner-third fa-spin"></i>
+  </div>
+  <div class="btn-primary-big" routerLink="/vote/address">
+    <i class="fas fa-check-to-slot"></i>
+    <h2 class="grow">Vote for a friend</h2>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+  <div class="btn-primary-big" routerLink="/recover">
+    <i class="fas fa-lock-open"></i>
+    <h2 class="grow">Regain access to UP</h2>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+</div>
+
+<i class="fixed top-8 right-8 fas fa-arrow-right-from-bracket" (click)="logout()"></i>
