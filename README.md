@@ -45,7 +45,7 @@ tmst99@recovery.social
 
 ## Full Docs
 
-[https://docs.recovery.social/docs/lsp11socialrecovery](https://docs.recovery.social/docs/lsp11socialrecovery)
+[https://docs.recovery.social/docs/standards/lsp11socialrecovery](https://docs.recovery.social/docs/standards/lsp11socialrecovery)
 
 ## Run the Program
 
@@ -87,7 +87,7 @@ The operator is also able to make a vote by himself, but has to cover the gas fe
 
 ## Full Docs
 
-https://docs.recovery.social/docs/lsp11recoveryservice
+https://docs.recovery.social/docs/standards/lsp11recoveryservice
 
 <br/>
 
