@@ -25,9 +25,9 @@ Because the number of guards (threshold), which are needed to recover, can be se
 
 ## Video
 
-Product Video: https://youtu.be/ymi8fKFvod8?t=117
-
 Full Video: https://youtu.be/ymi8fKFvod8
+
+Product Video: https://youtu.be/ymi8fKFvod8?t=117
 
 ## Team
 
