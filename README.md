@@ -96,7 +96,7 @@ tmst99@recovery.social
 
 ## Full Docs
 
-[https://docs.recovery.social/docs/standards/lsp11socialrecovery](https://docs.recovery.social/docs/standards/lsp11socialrecovery)
+[https://docs.recovery.social](https://docs.recovery.social)
 
 ## Run the Program
 
